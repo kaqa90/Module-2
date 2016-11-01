@@ -4,7 +4,7 @@
          .controller('AlreadyBoughtController', AlreadyBoughtController)
          .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
-    var buyItems =
+    var toBuyItems =
     [
     {name: "Cookies",
      quantity: 10
