@@ -8,13 +8,10 @@
          	function ToBuyController (ShoppingListCheckOffService)
           {
          		var buy = this;
-
          		buy.items = ShoppingListCheckOffService.toBuyItems();
-
          		buy.removeItem = function(itemIndex){
          			ShoppingListCheckOffService.bought(itemIndex);
          		};
-
          	}
 
           //Already bought list
@@ -22,14 +19,13 @@
         	function AlreadyBoughtController (ShoppingListCheckOffService)
           {
         		var bought = this;
-
         		bought.items = ShoppingListCheckOffService.boughtItems();
         	}
+
           //Shopping list service
         	function ShoppingListCheckOffService()
           {
         		var service = this;
-
             var toBuyItems =
             [
               {name: "Cookies",
@@ -82,4 +78,5 @@
           			return toBuyItems;
           		};
           }
+
 })();
