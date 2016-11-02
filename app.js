@@ -3,6 +3,29 @@
          .controller('ToBuyController', ToBuyController)
          .controller('AlreadyBoughtController', AlreadyBoughtController)
          .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
+         //To buy list
+         	ToBuyController.$inject =['ShoppingListService'];
+         	function ToBuyController (ShoppingListService){
+         		var buy = this;
+
+         		buy.items = ShoppingListService.buyItems();
+
+         		buy.removeItem = function(itemIndex){
+         			ShoppingListService.bought(itemIndex);
+         		};
+
+         	}
+
+          //Already bought list
+        	AlreadyBoughtController.$inject =['ShoppingListService'];
+        	function AlreadyBoughtController (ShoppingListService){
+        		var bought = this;
+
+        		bought.items = ShoppingListService.boughtItems();
+        	}
+          //Shopping list service
+        	function ShoppingListService(){
+        		var service = this;
 
     var toBuyItems =
     [
@@ -40,7 +63,20 @@
      quantity: 17
     }
     ];
-		//var buyItems = [{name:"a",quantity:10}];
+
 		var boughtItems = [];
 
+  		service.bought = function(itemIndex) {
+  			boughtItems.push(toBuyItems[itemIndex]);
+  			toBuyItems.splice(itemIndex, 1);
+  		};
+
+  		service.boughtItems = function(){
+  			return boughtItems;
+  		};
+
+  		service.buyItems = function(){
+  			return buyItems;
+  		};
+    }
 })();
