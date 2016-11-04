@@ -3,7 +3,8 @@
          .controller('ToBuyController', ToBuyController)
          .controller('AlreadyBoughtController', AlreadyBoughtController)
          .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
-         //To buy list
+
+          //To buy list
          	ToBuyController.$inject =['ShoppingListCheckOffService'];
          	function ToBuyController (ShoppingListCheckOffService)
           {
@@ -65,18 +66,18 @@
 
         		var boughtItems = [];
 
-          		service.bought = function(itemIndex) {
+          	service.bought = function(itemIndex) {
           			boughtItems.push(toBuyItems[itemIndex]);
           			toBuyItems.splice(itemIndex, 1);
-          		};
+          	};
 
-          		service.boughtItems = function(){
+          	service.boughtItems = function() {
           			return boughtItems;
-          		};
+          	};
 
-          		service.toBuyItems = function(){
+          	service.toBuyItems = function() {
           			return toBuyItems;
-          		};
+          	};
           }
 
 })();
